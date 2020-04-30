@@ -20,7 +20,7 @@ mongoose.set('useFindAndModify', false);
 mongoose.set('useUnifiedTopology', true);
 mongoose.set('useNewUrlParser', true);
 // mongoose.connect("mongodb://localhost/yelp_camp");
-mongoose.connect("mongodb+srv://Preet:Dejavu@1947@preetsingh-a0rfk.mongodb.net/test?retryWrites=true&w=majority");
+mongoose.connect("mongodb+srv://Preet:Dejavu1947@preetsingh-a0rfk.mongodb.net/test?retryWrites=true&w=majority");
 
 app.use(flash());
 app.use(express.static(__dirname + "/public"));
