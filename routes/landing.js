@@ -28,9 +28,6 @@ router.post("/register",function(req,res){
 });
 
 router.get("/login",function(req,res){
-	if(err){
-		req.flash("error",err.message);
-	}
 	res.render("login.ejs");
 });
 
