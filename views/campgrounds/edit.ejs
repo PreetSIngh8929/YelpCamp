@@ -1,12 +1,14 @@
 <%- include("../partials/header") %>
-<div class="container">
-	<div class="row">
+<br>
+	<div class="row justify-content-center">
+		<div class="col-md-12 text-center">
+			<h2 >
+				EDIT <%= campgrounds.name%>
+            </h2>
+		</div>
+
 		
-<h1 style="text-align:center;">
-	EDIT <%= campgrounds.name%>
-</h1>
-		
-<div style="width:35%;  margin:30px auto";>
+<div class="col-lg-4 col-md-6 col-sm-8 col-10">
 	
 		
 <form action="/campgrounds/<%=campgrounds._id%>?_method=PUT" method="POST">
@@ -36,6 +38,6 @@
 	</div>
 
     </div>
-</div>
+
 
 <%- include("../partials/footer") %>

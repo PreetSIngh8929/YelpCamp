@@ -1,64 +1,86 @@
 <%- include("../partials/header") %>
+<br>
 <div class="container">
 	<div class="row">
 		<div class="col-md-3">
 			<p class="lead">
 				YelpCamp
 			</p>
-			<div class="list-group">
+			<div>
+				<div class="list-group">
 				<li class="list-group-item active">info 1</li>
 				<li class="list-group-item">info 2</li>
 				<li class="list-group-item">info 3</li>
+					<br>
 			</div>
-			<a class="btn btn-xs btn-warning" href="/campgrounds">Go Back</a>
-		</div>
+			</div>
+			
+			
+			<a class="btn btn-sm btn-success" href="/campgrounds">Go Back</a>
+		    </div>
+		
 		<div class="col-md-9">
-			<div class="thumbnail">
-				<img class="img-responsive" src="<%=campgrounds.image %>">
-				<div class="caption">
-					<h4 class="pull-right">
+        <div class="card mb-3" >
+ 			 <img src="<%=campgrounds.image %>" class="card-img-top" alt="...">
+  			 <div class="card-body">
+    		 <h5 class="card-title float-left"><a> <%= campgrounds.name%></a></h5>
+	  		 <p class="float-right">
 						$<%=campgrounds.price%>/night
-					</h4>
-					<h4>
-	                 <a> <%= campgrounds.name%></a>
-                    </h4>
-					<p>
-		                  <%= campgrounds.description%>
-                    </p>    
-					<p><em> submiited by <%= campgrounds.author.username %>
-						</em>
-					</p>
-					<%	if(currentUser && campgrounds.author.id.equals(currentUser._id)) { %>
-					<button class="btn  btn-warning">
+			</p>
+				 <div class="clearfix">
+					 
+				 </div>
+				  <p>
+				 <em> submiited by <%= campgrounds.author.username %></em>
+			     </p>
+				 <hr>
+				 <p class="card-text"><%= campgrounds.description%></p>
+	  		 
+				
+             
+    	          <%	 if(currentUser && campgrounds.author.id.equals(currentUser._id)) { %>
+					<button class="btn btn-sm btn-warning">
 				        <a id="Edit-Button" href="/campgrounds/<%=campgrounds._id %>/edit" >Edit</a>
 					</button>
 					<form id="delete-form" action="/campgrounds/<%=campgrounds._id %>?_method=delete" method="POST">
-						<button  class="btn  btn-danger">
+						<button  class="btn btn-sm btn-danger">
 							Delete
 						</button>
 					</form>
 					<% } %>
-				</div>
-			</div>
-			<div class="well">
-				<div class="text-right">
-					<a  class="btn  btn-success" href="/campgrounds/<%= campgrounds._id%>/comments/new">
+  </div>
+</div>			
+		<!-- <div class="card">
+ 		 <h5 class="card-header">Featured</h5>
+  		 <div class="card-body">
+   		 <h5 class="card-title">Special title treatment</h5>
+   		 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+   		 <a href="#" class="btn btn-primary">Go somewhere</a>
+ 		 </div>
+        </div> -->
+			
+			<div class="card mb-3">
+				<div class="card-header">
+					<a  class="btn  btn-success float-right " href="/campgrounds/<%= campgrounds._id%>/comments/new">
 						Add New Comments
 					</a>
 				</div>
-				<hr>
+				
+				<div class="card-body">
+					
+				
 				<% campgrounds.comments.forEach(function(comment){ %>
-				<div class="row">
+				<div class="row card-body">
 					<div class="col-md-12">
-						<strong><%= comment.author.username %></strong>
-						<span class="pull-right">10 Days Ago</span>
-						<p>
+						<strong class="card-title"><%= comment.author.username %></strong>
+						<span class="float-right">10 Days Ago</span>
+						<p class="card-text">
 			                <%= comment.text %>
 			            </p>
 						<%	if(currentUser && comment.author.id.equals(currentUser._id)) { %>
-						<a class="btn btn-xs btn-warning" href="/campgrounds/<%= campgrounds._id%>/comments/<%= comment._id%>/edit">Edit</a>
+						<a class="btn btn-sm btn-warning" href="/campgrounds/<%= campgrounds._id%>/comments/<%= comment._id%>/edit">Edit</a>
 						<form id="delete-comment" action="/campgrounds/<%= campgrounds._id%>/comments/<%= comment._id%>?_method=DELETE" method="POST">
-							<button class="btn btn-xs btn-danger">
+							<button class="btn btn-sm btn-danger">
 								DELETE
 							</button>
 							<%	} %>
@@ -66,6 +88,7 @@
 					</div>
 				</div>
 	<% });%>
+					</div>
 			</div>
 		</div>
 	</div>

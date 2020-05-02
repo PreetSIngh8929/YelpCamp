@@ -19,6 +19,8 @@ var commentRoutes   =require("./routes/comments.js"),
 mongoose.set('useFindAndModify', false);
 mongoose.set('useUnifiedTopology', true);
 mongoose.set('useNewUrlParser', true);
+// process.env.DATABASEURL
+// mongodb://localhost/yelp_camp_v1
 mongoose.connect(process.env.DATABASEURL);
 
 
